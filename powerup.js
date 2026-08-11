@@ -22,7 +22,7 @@
             desc: clipped(card.desc, MAX_DESCRIPTION), labels: (card.labels || []).map((label) => label.name).filter(Boolean).join(', '),
             due: card.due || '', checklist: clipped(checklist, MAX_CHECKLIST)
           });
-          return t.popup({ title: 'Work with Claude', url: `./launch.html?${payload}`, height: 220 });
+          return t.popup({ title: 'Work with Claude', url: `./launch.html?handoff=2&${payload}`, height: 220 });
         }
       }];
     }
