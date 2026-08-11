@@ -1,7 +1,7 @@
 /* global TrelloPowerUp */
 (function () {
   'use strict';
-  const launchURL = 'https://paramwork.github.io/trello-claude-powerup/launch.html?v=mac-absolute-1';
+  const launchURL = 'https://paramwork.github.io/trello-claude-powerup/launch.html?v=mac-direct-link-2';
   window.TrelloPowerUp.initialize({
     'card-buttons': function (t) {
       return [{
