@@ -6,7 +6,7 @@
       return [{
         icon: { url: './icon.svg' },
         text: '✦ Work with Claude',
-        callback: function () {
+        callback: function (t) {
           return t.popup({ title: 'Work with Claude', url: './launch.html', height: 220 });
         }
       }];
