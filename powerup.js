@@ -12,15 +12,13 @@
         icon: { url: './icon.svg' }, text: '✦ Work with Claude',
         callback: async function () {
           const [card, board, list] = await Promise.all([
-            t.card('id', 'name', 'desc', 'url', 'shortLink', 'due', 'labels', 'checklists'),
-            t.board('id', 'name', 'url', 'shortLink'), t.list('id', 'name')
+            t.card('id', 'name', 'desc', 'url', 'shortLink'),
+            t.board('id', 'name'), t.list('id', 'name')
           ]);
-          const checklist = (card.checklists || []).flatMap((item) => (item.checkItems || []).map((checkItem) => checkItem.name)).join('\n');
           const payload = query({
             v: '1', cardId: card.id, cardUrl: card.url, shortLink: card.shortLink, title: card.name,
             boardId: board.id, boardName: board.name, listId: list.id, listName: list.name,
-            desc: clipped(card.desc, MAX_DESCRIPTION), labels: (card.labels || []).map((label) => label.name).filter(Boolean).join(', '),
-            due: card.due || '', checklist: clipped(checklist, MAX_CHECKLIST)
+            desc: clipped(card.desc, MAX_DESCRIPTION), labels: '', due: '', checklist: ''
           });
           return t.popup({ title: 'Work with Claude', url: `./launch.html?handoff=2&${payload}`, height: 220 });
         }
